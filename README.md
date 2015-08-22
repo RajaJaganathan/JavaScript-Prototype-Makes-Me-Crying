@@ -1,10 +1,14 @@
 ##Prototype
 
-We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. Reason behind this prototype pattern is more powerful than classical inheritance which is coming from static language.
+We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. One of eeason behind this prototype pattern is more powerful than classical inheritance which is coming from static language.
 
-Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Let's forgot about prototype.
+Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Let's thing about prototype.
 
 Going to define simple constructor function to hold the point of x,y number to draw line in canvas.
+
+Let's define Point constructor to hold x and y points to represents position.
+
+###Constructor Function
 
 ```
 function Point(x,y){
@@ -20,20 +24,21 @@ function Point(x,y){
 }
 
 ```
-
-
-Create 1 point object to make new line and 3 point to make a triangle. But here in one gotcho in above Point constructor function.
+We need Point constructor to draw a line. But here in one disadvantage of Point constructor function and it's own constructor pattern problem.
 
 ```
 var p1 = new Point(100,100);
 var p2 = new Point(100,100);
 var p3 = new Point(100,100);
+
 ```
 Now examine construtor function. Let's do simple comparison with p1 and p2.
 
-```> p1.constructor === p2.constructor```
-```> true```
+```
+> p1.constructor === p2.constructor
+> true
 
+```
 Any number of instance create by Point construtor function it is always points to Point.So what is the issue here. Wait look at 2 methods and 2 props on Point constructor function. These are own property of p1 and p2.Meaning for each instance of Point having their own props and method this is cons of constructor function there is no options to share properties and method among the instance.
 
 Let's see practically what is the problem with construtor function.
@@ -43,7 +48,6 @@ Let's see practically what is the problem with construtor function.
 false 
 
 ```
-
 Above statement is clearly stated that p1 having getPoint their own funtion and p2 having getPoint their own function so completly unccesseary of creating getPoint() and toString() function for each instance of Point.
 
 That's where the prototype come into the picture and it played nicely. Now refine the above Point function.
@@ -145,7 +149,6 @@ var s2 = new Square();
 
 console.log(s1.props.name);
 console.log(s2.props.name);
-
 ```
 
 ```
@@ -226,13 +229,13 @@ Take a look at
 Square.prototype = Shape.prototype; 
 
 ```
-Square protype is completely replace with Shape.prototype so constructor properties in prototype also override. So don't rely on construxtor property. Howevey when ever protoptype obhect changes that time reset the constructor propery as well.
+Square protype is completely replace with Shape.prototype so constructor properties in prototype also override. So don't rely on construtor property. When ever protoptype obhect changes that time reset the constructor propery as well.
 
 ```
 Square.prototype = Shape.prototype; 
 Square.prototype.constructor = Square;
 ```
-Now it will points to Square instead of Shape. even though 'instance of' do he job better.
+Now it will points to Square instead of Shape. Instead of rely on constructor property on prototype. How ever 'instance of' operator does job well even without resetting the constructor property.
 
 ```
 > s1 instanceof Square
@@ -243,47 +246,66 @@ true
 true
 
 ```
-
-
-
+Find the below complete prototype pattern snippets with inheritance usage.
 
 ```
-function Line(p1,p2){
-	this.p1 = p1;
-	this.p2 = p2;
+function Point(x,y){
+	this.x = x;
+	this.y = y;	
 }
 
-function Shape(){
+function Shape(elem, points){
 	this.lines = [];
-	this.points = [];
+	this.points = points || [];
+	this.elem = elem;
 	this.init();
 }
 
 Shape.prototype = {
 	constructor:Shape,
 	init:function(){
-		this.context = this.context || document.getElementById('canvas').getContext('2d');		
+		this.context = this.context || document.getElementById(this.elem).getContext('2d');		
 	},
 	draw:function(){
 		var ctx = this.context;
-		ctx.strokeStyle = "#FF0";
+		ctx.fillStyle = 'green';
 		ctx.beginPath();
 
 		ctx.moveTo(this.points[0].x,this.points[0].y);
-		for (var idx = 1; idx < points.length; idx++) {			
+		for (var idx = 1; idx < this.points.length; idx++) {			
 			ctx.lineTo(this.points[idx].x,this.points[idx].y);ctx.fill();
 		}
 
-		ctx.closePath();
 		ctx.stroke();
+		ctx.closePath();
 	}
+};
+
+function extend(Child, Parent){
+	Child.prototype = Object.create(Parent.prototype);
+	Child.prototype.constructor = Child;
 }
 
-
-function Square(){
-	Shape.call(this);
+function Square(elem, points){
+	Shape.apply(this, arguments);	
 }
 
+extend(Square,Shape);
+// Square.prototype = Object.create(Shape.prototype);
+// Square.prototype.constructor = Square;
 
+var p1  = new Point(100,100);
+var p2  = new Point(200,100);
+var p3  = new Point(200,200);
+var p4  = new Point(100,200);
+
+var shape1 = new Shape('canvas',[p1,p2,p3,p4]);
+shape1.draw();
 
 ```
+Also Shape function can be used to create many geometrical objects like Rectangle,Triangle and circle etc. Here circle is bit different behaviour which have to override 'draw' method in order to get desired output.
+
+![alt text](/path/to/img.jpg "Title")
+
+
+
