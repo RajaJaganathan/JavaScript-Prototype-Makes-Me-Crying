@@ -1,5 +1,10 @@
 ##Prototype
 
+Yes many times I cried because of prototype pattern when ever I try to understand about it. May be due to I'm came from another scripting language(ActionScript3) background. Anyhow after read many about Prototype my reaction will be 
+
+![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/img/cry-icon.png "Prototype")
+
+
 We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. One of eeason behind this prototype pattern is more powerful than classical inheritance which is coming from static language.
 
 Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Let's thing about prototype.
@@ -305,7 +310,9 @@ shape1.draw();
 ```
 Also Shape function can be used to create many geometrical objects like Rectangle,Triangle and circle etc. Here circle is bit different behaviour which have to override 'draw' method in order to get desired output.
 
-![alt text](/path/to/img.jpg "Title")
+![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/proto_demo_output.png "Prototype")
 
+Finally 
 
+![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/img/smile.png "Prototype")
 
