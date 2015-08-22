@@ -38,8 +38,11 @@ Any number of instance create by Point construtor function it is always points t
 
 Let's see practically what is the problem with construtor function.
 
-```> p1.getPoint === p2.getPoint```
-```> false ```
+```
+> p1.getPoint === p2.getPoint
+false 
+
+```
 
 Above statement is clearly stated that p1 having getPoint their own funtion and p2 having getPoint their own function so completly unccesseary of creating getPoint() and toString() function for each instance of Point.
 
@@ -59,8 +62,11 @@ Point.prototype.toString = function(){
 	console.log("x : "+x + " y : "+y);
 }
 ```
-```> p1.getPoint === p2.getPoint
-> true```
+```
+> p1.getPoint === p2.getPoint
+> true
+
+```
 
 So Prototype is able to sharing properties and method among the instances. Here are we removed 2 methods from Point function atleast own methods. Also we create 2 method in prototype object. Do you know Prototype where it is come from ?
 
@@ -74,8 +80,12 @@ function Point(x,y){
 	this.y = y;
 }
 ```
-```> var p1 = new Point(100,100);
-```> console.log(p1.tostring());
+
+```
+> var p1 = new Point(100,100);
+> console.log(p1.tostring());
+
+```
 
 toString() is not defined on Point constructor function then how it is print out "[object Object]". The reason behind this invoking a function as a constructor (i.e. with the new keyword) runs the following steps:
 
@@ -138,11 +148,13 @@ console.log(s2.props.name);
 
 ```
 
-```> s1.props.name = "I'm square instance"
+```
+> s1.props.name = "I'm square instance"
   "I'm square instance"
 > s2.props.name
   "Shape"
 ```
+
 Now clearly stated that 2 instance having their own properties regardless of primities or reference type. Is it fine ohh wait one more issue with above code. what is the issue now. Constructor function is called twice ie,Square.prototype = new Shape(); and Shape.apply(this,arguments); both called construtctor function each time this shows clearly ineffecitent method. But don't worry about luckly we have option to solve the problems too.
 
 ```
@@ -163,6 +175,7 @@ var s2 = new Square();
 console.log(s1.props.name);
 console.log(s2.props.name);
 ```
+```
 > Shape constructor called
 > Shape constructor called
 > Shape constructor called
@@ -172,6 +185,7 @@ console.log(s2.props.name);
 > s2.props.name
   "Shape"
 
+```
 How do we solve the problem instead of creating new instance of Shape. Do assign the prototype of Shape Object.
 
 ```
@@ -188,15 +202,16 @@ function Square(){
 
 Square.prototype = Shape.prototype; //This line solve the constructor called twice.Share the parent prototype alone instead of instance properties and methods
 
+```
 var s1 = new Square();
 var s2 = new Square();
-
 ```
 
-> Shape constructor called
-> Shape constructor called
-
 ```
+> Shape constructor called
+> Shape constructor called
+```
+
 Ohh this time only once constructor function is being called. 
 
 Let's examine 
@@ -213,12 +228,10 @@ Square.prototype = Shape.prototype;
 ```
 Square protype is completely replace with Shape.prototype so constructor properties in prototype also override. So don't rely on construxtor property. Howevey when ever protoptype obhect changes that time reset the constructor propery as well.
 
-
 ```
 Square.prototype = Shape.prototype; 
 Square.prototype.constructor = Square;
 ```
-
 Now it will points to Square instead of Shape. even though 'instance of' do he job better.
 
 ```
