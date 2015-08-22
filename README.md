@@ -31,15 +31,15 @@ var p3 = new Point(100,100);
 ```
 Now examine construtor function. Let's do simple comparison with p1 and p2.
 
-> p1.constructor === p2.constructor
-> true
+```> p1.constructor === p2.constructor```
+```> true```
 
 Any number of instance create by Point construtor function it is always points to Point.So what is the issue here. Wait look at 2 methods and 2 props on Point constructor function. These are own property of p1 and p2.Meaning for each instance of Point having their own props and method this is cons of constructor function there is no options to share properties and method among the instance.
 
 Let's see practically what is the problem with construtor function.
 
-> p1.getPoint === p2.getPoint
-> false 
+```> p1.getPoint === p2.getPoint```
+```> false ```
 
 Above statement is clearly stated that p1 having getPoint their own funtion and p2 having getPoint their own function so completly unccesseary of creating getPoint() and toString() function for each instance of Point.
 
@@ -59,8 +59,8 @@ Point.prototype.toString = function(){
 	console.log("x : "+x + " y : "+y);
 }
 ```
-> p1.getPoint === p2.getPoint
-> true
+```> p1.getPoint === p2.getPoint
+> true```
 
 So Prototype is able to sharing properties and method among the instances. Here are we removed 2 methods from Point function atleast own methods. Also we create 2 method in prototype object. Do you know Prototype where it is come from ?
 
@@ -74,8 +74,8 @@ function Point(x,y){
 	this.y = y;
 }
 ```
-> var p1 = new Point(100,100);
-> console.log(p1.tostring());
+```> var p1 = new Point(100,100);
+```> console.log(p1.tostring());
 
 toString() is not defined on Point constructor function then how it is print out "[object Object]". The reason behind this invoking a function as a constructor (i.e. with the new keyword) runs the following steps:
 
@@ -103,12 +103,15 @@ var s2 = new Square();
 console.log(s1.props.name);
 console.log(s2.props.name);
 ```
+```
 > s1.props.name
 "Shape"
 > s1.props.name = "I'm Square"
 "I'm Square"
 > s2.props.name
 "I'm Square"
+
+```
 
 Problem #1 : All reference type in parent will reflect changes to child object. Square.prototype = new Shape(); become as Square.prototype.props then finally it share 'props' perperties with all instance of Square.
 
@@ -135,11 +138,11 @@ console.log(s2.props.name);
 
 ```
 
-> s1.props.name = "I'm square instance"
+```> s1.props.name = "I'm square instance"
   "I'm square instance"
 > s2.props.name
   "Shape"
-
+```
 Now clearly stated that 2 instance having their own properties regardless of primities or reference type. Is it fine ohh wait one more issue with above code. what is the issue now. Constructor function is called twice ie,Square.prototype = new Shape(); and Shape.apply(this,arguments); both called construtctor function each time this shows clearly ineffecitent method. But don't worry about luckly we have option to solve the problems too.
 
 ```
@@ -181,6 +184,8 @@ function Square(){
 	Shape.apply(this,arguments);
 }
 
+```
+
 Square.prototype = Shape.prototype; //This line solve the constructor called twice.Share the parent prototype alone instead of instance properties and methods
 
 var s1 = new Square();
@@ -191,18 +196,20 @@ var s2 = new Square();
 > Shape constructor called
 > Shape constructor called
 
+```
 Ohh this time only once constructor function is being called. 
 
 Let's examine 
-
+```
 > s1.constructor 
 function Shape()
-
+```
 Why it is points to Shape construtor function it should points to Square right. what went wrongs ?
 Take a look at 
 
 ```
 Square.prototype = Shape.prototype; 
+
 ```
 Square protype is completely replace with Shape.prototype so constructor properties in prototype also override. So don't rely on construxtor property. Howevey when ever protoptype obhect changes that time reset the constructor propery as well.
 
@@ -214,6 +221,7 @@ Square.prototype.constructor = Square;
 
 Now it will points to Square instead of Shape. even though 'instance of' do he job better.
 
+```
 > s1 instanceof Square
 true
 > s1 instanceof Shape
@@ -221,11 +229,7 @@ true
 > s1 instanceof Object
 true
 
-
-
-
-
-
+```
 
 
 
