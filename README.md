@@ -2,7 +2,7 @@
 
 Yes many times I cried because of prototype pattern when ever I try to understand about it. May be due to I'm came from another scripting language(ActionScript3) background. Anyhow after read many about Prototype my reaction will be 
 
-![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/img/cry-icon.png "Prototype")
+![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/cry-icon.png "Prototype")
 
 
 We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. One of eeason behind this prototype pattern is more powerful than classical inheritance which is coming from static language.
@@ -314,5 +314,5 @@ Also Shape function can be used to create many geometrical objects like Rectangl
 
 Finally 
 
-![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/img/smile.png "Prototype")
+![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/smile.png "Prototype")
 
