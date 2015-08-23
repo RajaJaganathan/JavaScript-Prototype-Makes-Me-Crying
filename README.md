@@ -110,7 +110,7 @@ If you understood #2 you will come to know toString() method where it is comes f
 
 ##Inheritance
 
-In javascript inheritance is implemented through a special property __proto__ (named [[Prototype]] in the specification. It is just approach there are many way to acheive reusablity this manner.
+In javascript inheritance is implemented through a special property \__proto__ (named [[Prototype]] in the specification. It is just one approach there are many way to acheive reusablity this manner.
 
 ```
 function Shape(){
@@ -237,8 +237,7 @@ Why it is points to Shape construtor function it should points to Square right. 
 Take a look at 
 
 ```
-Square.prototype = Shape.prototype; 
-
+Square.prototype = Shape.prototype;
 ```
 Square protype is completely replace with Shape.prototype so constructor properties in prototype also override. So don't rely on construtor property. When ever protoptype obhect changes that time reset the constructor propery as well.
 
@@ -255,7 +254,6 @@ true
 true
 > s1 instanceof Object
 true
-
 ```
 Find the below complete prototype pattern snippets with inheritance usage.
 
@@ -312,8 +310,8 @@ var p4  = new Point(100,200);
 
 var shape1 = new Shape('canvas',[p1,p2,p3,p4]);
 shape1.draw();
-
 ```
+
 Also Shape function can be used to create many geometrical objects like Rectangle,Triangle and circle etc. Here circle is bit different behaviour which have to override 'draw' method in order to get desired output.
 
 ![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/proto_demo_output.png "Prototype")
