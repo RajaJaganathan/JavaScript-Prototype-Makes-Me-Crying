@@ -1,17 +1,16 @@
 ##Prototype
 
-Yes many times I cried because of prototype pattern when ever I try to understand about it. May be due to I'm came from another scripting language(ActionScript3) background. Anyhow after read many about Prototype my reaction will be 
+Yes many times I cried because of prototype pattern when ever I tried to understand about it. May be I'm came from another scripting language(ActionScript3) background with Class oriented language. Anyhow after read many times about Prototype my reaction will be :(
 
 ![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/cry-icon.png "Prototype")
 
+We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. JavaScript remains prototype-based and one of reason behind this prototype pattern is more powerful than classical inheritance which is coming from static language like Java, C# etc...,
 
-We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. One of eeason behind this prototype pattern is more powerful than classical inheritance which is coming from static language.
+Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Where it's play critical role. Let's thing about prototype.
 
-Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Let's thing about prototype.
+Going to define simple constructor function to hold the point of x,y number purpose of draw shapes in canvas.
 
-Going to define simple constructor function to hold the point of x,y number to draw line in canvas.
-
-Let's define Point constructor to hold x and y points to represents position.
+Let's define Point constructor to hold x and y points to represents position of Shape.
 
 ###Constructor Function
 
@@ -29,7 +28,7 @@ function Point(x,y){
 }
 
 ```
-We need Point constructor to draw a line. But here in one disadvantage of Point constructor function and it's own constructor pattern problem.
+We need Point constructor to draw a line. But above code have one disadvantage of Point constructor function and it's own constructor pattern problem.
 
 ```
 var p1 = new Point(100,100);
@@ -44,7 +43,7 @@ Now examine construtor function. Let's do simple comparison with p1 and p2.
 > true
 
 ```
-Any number of instance create by Point construtor function it is always points to Point.So what is the issue here. Wait look at 2 methods and 2 props on Point constructor function. These are own property of p1 and p2.Meaning for each instance of Point having their own props and method this is cons of constructor function there is no options to share properties and method among the instance.
+Any number of instance create by Point construtor function it is always points to Point.So what is the issue here. Wait look at 2 methods and 2 props on Point constructor function. These are own property of p1 and p2. Meaning, for each instance of Point having their own props and method this is cons of constructor function as well. Since there is no options to share properties and methods among their instance.
 
 Let's see practically what is the problem with construtor function.
 
@@ -55,7 +54,7 @@ false
 ```
 Above statement is clearly stated that p1 having getPoint their own funtion and p2 having getPoint their own function so completly unccesseary of creating getPoint() and toString() function for each instance of Point.
 
-That's where the prototype come into the picture and it played nicely. Now refine the above Point function.
+That's where the prototype come into the picture and it played nicely. Now redefine the above Point constructor function with the help of prototype
 
 ```
 function Point(x,y){
@@ -77,11 +76,9 @@ Point.prototype.toString = function(){
 
 ```
 
-So Prototype is able to sharing properties and method among the instances. Here are we removed 2 methods from Point function atleast own methods. Also we create 2 method in prototype object. Do you know Prototype where it is come from ?
+So Prototype is able to sharing properties and method among their instances. Here are we removed 2 methods from Point function atleast own methods. Also removed methods are attached into prototype object. Do you know Prototype object where it is come from ?
 
-TODO:Adv js
-
-Prototype is simple plain object which will create every time when object instanitate with 'new' keyword as decribe in #2. By default it always points to Object.prototype.
+Prototype is simple plain object which will create every time when object instanitate with 'new' keyword. By default it always points to Object.prototype.
 
 ```
 function Point(x,y){
@@ -95,16 +92,25 @@ function Point(x,y){
 > console.log(p1.tostring());
 
 ```
+toString() is not defined on Point constructor function then how it is print out "[object Object]". Because of all javascript object link to 'Object' prototype. Object prototype having 
+toString(), valueOf, hasOwnProperty() and so on.
 
-toString() is not defined on Point constructor function then how it is print out "[object Object]". The reason behind this invoking a function as a constructor (i.e. with the new keyword) runs the following steps:
+The reason behind this invoking a function as a constructor (i.e. with the new keyword) runs the following steps:
 
-1)create a new object
-2)set the prototype of that object to the object in the prototype property of the function
-3)execute the constructor function in the context of that object (i.e. this is the new object)
-4)return that object (if the constructor has no return statement)
+1. Create a new object
 
-If you understood #2 you will come to know toString() where it is come from. Let's see how prototype will supports inheritance even though it having with some strange flaws.
+2. Set the prototype of that object to the object in the prototype property of the function
 
+3. Execute the constructor function in the context of that object (i.e. this is the new object)
+
+4. Return that object (if the constructor has no return statement)
+
+
+If you understood #2 you will come to know toString() method where it is comes from. Let's see how prototype will supports inheritance with lot of flaws and by the time will correct it.
+
+##Inheritance
+
+In javascript inheritance is implemented through a special property __proto__ (named [[Prototype]] in the specification. It is just approach there are many way to acheive reusablity this manner.
 
 ```
 function Shape(){
@@ -134,7 +140,7 @@ console.log(s2.props.name);
 
 Problem #1 : All reference type in parent will reflect changes to child object. Square.prototype = new Shape(); become as Square.prototype.props then finally it share 'props' perperties with all instance of Square.
 
-Problem #2 : Square.prototype = new Shape(); no way to pass parameters to Shape function.
+Problem #2 : Square.prototype = new Shape(); no way to pass parameters to Shape function(atleast at this point of time)
 
 So let's solve the above problem #2 with the help of borrow constructor pattern.
 
