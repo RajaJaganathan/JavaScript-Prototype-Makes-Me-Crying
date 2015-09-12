@@ -1,14 +1,14 @@
 ##Prototype
 
-Yes many times I cried because of prototype pattern when ever I tried to understand about it. May be I'm came from another scripting language(ActionScript3) background with Class oriented language. Anyhow after read many times about Prototype my reaction will be :(
+Yes I had enough chances to cry when ever I heard or read about prototype buzz word in javascript. It is completely trickly for me to grasp the whole idea of prototype pattern. So many times I tried to read about Prototype then finally my reaction will be :(
 
 ![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/cry-icon.png "Prototype")
 
-We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. JavaScript remains prototype-based and one of reason behind this prototype pattern is more powerful than classical inheritance which is coming from static language like Java, C# etc...,
+Today We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. JavaScript remains prototype-based and one of reason behind this prototype pattern is more powerful than classical inheritance which is coming from static language like Java, C# etc...,
 
 Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Where it's play critical role. Let's thing about prototype.
 
-Going to define simple constructor function to hold the point of x,y number purpose of draw shapes in canvas.
+Going to define simple constructor function to hold the point of x, y number purpose of draw shapes in canvas.
 
 Let's define Point constructor to hold x and y points to represents position of Shape.
 
@@ -233,7 +233,7 @@ Let's examine
 > s1.constructor 
 function Shape()
 ```
-Why it is points to Shape construtor function it should points to Square right. what went wrongs ?
+Why it is points to Shape construtor function it should points to Square right. What went wrongs ?
 Take a look at 
 
 ```
