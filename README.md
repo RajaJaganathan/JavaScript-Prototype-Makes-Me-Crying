@@ -169,7 +169,7 @@ console.log(s2.props.name);
   "Shape"
 ```
 
-Now clearly stated that 2 instance having their own properties regardless of primities or reference type. Is it fine?. ohh!!! wait one more issue with above code ?. what is the issue now ?. Constructor function is called twice ie,Square.prototype = new Shape(); and Shape.apply(this,arguments); both called construtctor function each time this shows clearly inefficient method. But don't worry about above problem. Luckly, we have option to solve this problem too.
+Now clearly stated that 2 instance having their own properties regardless of primities or reference type. Is it fine?. ohh!!! Wait one more issue with above code. What is the issue now ?. Constructor function is called twice ie,Square.prototype = new Shape(); and Shape.apply(this,arguments); both called construtctor function each time this shows clearly inefficient method. But don't worry about above problem. Luckly, we have option to solve this problem too.
 
 ```
 function Shape(){
