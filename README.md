@@ -1,6 +1,6 @@
 ##Prototype
 
-Yes I had enough chances to cry when ever I heard or read about prototype buzz word in javascript. It is completely trickly for me to grasp the whole idea of prototype pattern. Many times I tried to read about Prototype then finally my reaction will be :(
+Yes I had enough chances to cry when ever I heard or read about prototype buzz word in javascript. It is completely trickly for me to grasp the whole idea of prototype pattern. Many times I have tried to understand about Prototype then finally my reaction will be :(
 
 ![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/cry-icon.png "Prototype")
 
