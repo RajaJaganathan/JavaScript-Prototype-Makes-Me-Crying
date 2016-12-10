@@ -4,9 +4,9 @@ Yes I had enough chances to cry when ever I heard or read about prototype buzz w
 
 ![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/cry-icon.png "Prototype")
 
-Today We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. JavaScript remains prototype-based and one of reason behind this prototype pattern is more powerful than classical inheritance which is coming from static language like Java, C# etc...,
+Today We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it's purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. JavaScript remains prototype-based and one of reason behind this prototype pattern is more powerful than classical inheritance which is coming from static language like Java, C# etc...,
 
-Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Where it's play critical role. Let's think about prototype.
+Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Where it's play critical role. Let's sink in prototype.
 
 Going to define simple constructor function to hold the point of x, y number purpose of draw shapes in canvas.
 
@@ -28,7 +28,7 @@ function Point(x,y){
 }
 
 ```
-We need Point constructor to draw a line. But above code have one disadvantage of Point constructor function and it's own constructor pattern problem.
+We need Point constructor to draw a line. Let's look the above code having one disadvantage of Point constructor function also it's own constructor pattern problem.
 
 ```
 var p1 = new Point(100,100);
@@ -52,7 +52,7 @@ Let's see practically what is the problem with construtor function.
 false 
 
 ```
-Above statement is clearly stated that p1 and p2 having getPoint their own funtion. So it is completly unccesseary of creating getPoint() and toString() function for each instance of Point.
+Above statement is clearly stated that p1 and p2 having getPoint their own funtion. It is completly unnecessary of creating getPoint() and toString() function for each instance of Point.
 
 That's where the prototype pattern comes into the picture and it played nicely. Now redefine the above Point constructor function with the help of prototype
 
@@ -76,7 +76,7 @@ Point.prototype.toString = function(){
 
 ```
 
-So Prototype is able to sharing properties and method among their instances. Here are we removed 2 methods from Point function atleast own methods. Also removed methods are attached into prototype object. Do you know Prototype object where it is come from ?
+Prototype is able to sharing properties and method among their instances. Here we removed 2 methods from Point function and those 2 methods are attached into prototype object. Do you know Prototype object where it is come from ?
 
 Prototype is simple plain object which will create every time when object instanitate with 'new' keyword. By default it always points to Object.prototype.
 
@@ -226,15 +226,12 @@ var s2 = new Square();
 > Shape constructor called
 ```
 
-Ohh!! this time only once constructor function is being called. 
-
-Let's examine 
+Ohh!! this time only once constructor function is being called. Let's examine 
 ```
 > s1.constructor 
 function Shape()
 ```
-Why it is points to Shape construtor function, it should points to Square right?. What went wrongs ?
-Take a look at 
+Why it is points to Shape construtor function, it should points to Square right?. What went wrong ? Take a look at 
 
 ```
 Square.prototype = Shape.prototype;
@@ -312,7 +309,7 @@ var shape1 = new Shape('canvas',[p1,p2,p3,p4]);
 shape1.draw();
 ```
 
-Also Shape function can be used to create many geometrical objects like Rectangle, Triangle and Circle etc. Here Circle is bit different behaviour which have to override 'draw' method in order to get desired output.
+also Shape function can be used to create many geometrical objects like Rectangle, Triangle and Circle etc. Here Circle is bit different behaviour which have to override 'draw' method in order to get desired output.
 
 ![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/proto_demo_output.png "Prototype")
 
