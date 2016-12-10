@@ -1,6 +1,6 @@
 ##Prototype
 
-Yes I had enough chances to cry when ever I heard or read about prototype buzz word in javascript. It is completely trickly for me to grasp the whole idea of prototype pattern. Many times I have tried to understand about Prototype then finally my reaction will be :(
+Yes I had enough chances to cry when ever I heard or read about prototype buzz word in javascript. It is completely tricky for me to grasp the whole idea of prototype pattern. Many times I have tried to understand about Prototype then finally my reaction will be :(
 
 ![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/cry-icon.png "Prototype")
 
@@ -45,14 +45,14 @@ Now examine construtor function. Let's do simple comparison with p1 and p2.
 ```
 Any number of instance create by Point construtor function it is always points to Point.So what is the issue here ?. Wait, look at 2 methods and 2 props on Point constructor function. These are own property of p1 and p2. Which means, for each instance of Point having their own props and method this is cons of constructor function as well. Since there is no options to share properties and methods among their instance.
 
-Let's see practically what is the problem with construtor function.
+Let's see practically what is the problem with constructor function.
 
 ```
 > p1.getPoint === p2.getPoint
 false 
 
 ```
-Above statement is clearly stated that p1 and p2 having getPoint their own funtion. It is completly unnecessary of creating getPoint() and toString() function for each instance of Point.
+Above statement is clearly stated that p1 and p2 having getPoint their own function. It is completely unnecessary of creating getPoint() and toString() function for each instance of Point.
 
 That's where the prototype pattern comes into the picture and it played nicely. Now redefine the above Point constructor function with the help of prototype
 
@@ -78,7 +78,7 @@ Point.prototype.toString = function(){
 
 Prototype is able to sharing properties and method among their instances. Here we removed 2 methods from Point function and those 2 methods are attached into prototype object. Do you know Prototype object where it is come from ?
 
-Prototype is simple plain object which will create every time when object instanitate with 'new' keyword. By default it always points to Object.prototype.
+Prototype is simple plain object which will create every time when object instantiate with 'new' keyword. By default it always points to Object.prototype.
 
 ```
 function Point(x,y){
@@ -169,7 +169,7 @@ console.log(s2.props.name);
   "Shape"
 ```
 
-Now clearly stated that 2 instance having their own properties regardless of primities or reference type. Is it fine?. ohh!!! Wait one more issue with above code. What is the issue now ?. Constructor function is called twice ie,Square.prototype = new Shape(); and Shape.apply(this,arguments); both called construtctor function each time this shows clearly inefficient method. But don't worry about above problem. Luckly, we have option to solve this problem too.
+Now clearly stated that 2 instance having their own properties regardless of primities or reference type. Is it fine?. oh!!! Wait one more issue with above code. What is the issue now ?. Constructor function is called twice ie,Square.prototype = new Shape(); and Shape.apply(this,arguments); both called construtctor function each time this shows clearly inefficient method. But don't worry about above problem. Luckly, we have option to solve this problem too.
 
 ```
 function Shape(){
