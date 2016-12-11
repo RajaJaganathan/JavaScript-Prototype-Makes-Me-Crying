@@ -4,9 +4,9 @@ Yes I had enough chances to cry when ever I heard or read about prototype buzz w
 
 ![alt text](https://raw.githubusercontent.com/RajaJaganathan/JavaScript-Prototype-Makes-Me-Crying/master/imgs/cry-icon.png "Prototype")
 
-Today We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it's purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. JavaScript remains prototype-based and one of reason behind this prototype pattern is more powerful than classical inheritance which is coming from static language like Java, C# etc...,
+Today We are really exciting about es6 right. we have lot of stunning features like arrows, classes, enhanced object literals,template strings, let + const, iterators + for..of, generators, modules and many more wow feature in es6.Then why do we care about prototype matter even though we have Class feature in es6(atleast future) it's purely rely on prototype pattern. In other words prototype pattern powered to class mechanism in es6. JavaScript remains prototype-based becasue prototype pattern is more powerful than classical inheritance which is available in static language like Java, C# etc...,
 
-Let's discuss about why prototype pattern is important in javascript. why do we need to care about prototype? Where it's play critical role. Let's sink in prototype.
+Let's discuss about why prototype pattern is important in javascript. Why do we need to care about prototype? Where it's play critical role. Let's sink in prototype.
 
 Going to define simple constructor function to hold the point of x, y number purpose of draw shapes in canvas.
 
